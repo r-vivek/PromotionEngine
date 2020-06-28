@@ -101,6 +101,20 @@ namespace PromotionEngineTests
                 }
 
             };
+
+        public static List<CartItem> CartItemsD = new List<CartItem>
+        {
+            new CartItem
+            {
+                Item = "A",
+                Quantity = 3
+            },
+            new CartItem
+            {
+                Item = "B",
+                Quantity = 1
+            }
+        };
         private static IEnumerable<TestCaseData> TestData
         {
             get
@@ -108,6 +122,7 @@ namespace PromotionEngineTests
                 yield return new TestCaseData(CartItemsA, 100);
                 yield return new TestCaseData(CartItemsB, 370);
                 yield return new TestCaseData(CartItemsC, 280);
+                yield return new TestCaseData(CartItemsD, 160);
             }
         }
 
@@ -131,7 +146,7 @@ namespace PromotionEngineTests
                 mock.Mock<IRuleReader>().Setup(x => x.ReadRules()).Returns(ReadDataFromJson);
                 var sut = mock.Create<PromotionEngine.PromotionEngine>();
                 var total = sut.Run(cartItems, ItemPriceList);
-                Assert.AreEqual(expectedResult, expectedResult);
+                Assert.AreEqual(expectedResult, total);
             }
         }
     }

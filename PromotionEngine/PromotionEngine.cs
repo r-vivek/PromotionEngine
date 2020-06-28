@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PromotionEngine
 {
@@ -30,6 +31,16 @@ namespace PromotionEngine
                 }
             }
 
+            foreach (var rule in rules)
+            {
+                if (rule.Dependency == null)
+                {
+                    var simpleItem = cartItems.First((x => x.Item == rule.Item));
+                    var simpleItemTotal = (simpleItem.Quantity / rule.Quantity) * rule.Price +
+                                          (simpleItem.Quantity % rule.Quantity) * simpleItem.ItemPrice;
+                    runningTotal += simpleItemTotal;
+                }
+            }
 
             return runningTotal;
         }
