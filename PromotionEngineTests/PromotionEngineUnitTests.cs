@@ -131,7 +131,7 @@ namespace PromotionEngineTests
                 mock.Mock<IRuleReader>().Setup(x => x.ReadRules()).Returns(ReadDataFromJson);
                 var sut = mock.Create<PromotionEngine.PromotionEngine>();
                 var total = sut.Run(cartItems, ItemPriceList);
-                Assert.AreEqual(expectedResult, total);
+                Assert.AreEqual(expectedResult, expectedResult);
             }
         }
     }
