@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using Autofac.Extras.Moq;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using PromotionEngine;
@@ -125,7 +126,13 @@ namespace PromotionEngineTests
         [Category("PromotionEngine")]
         public void Test1(List<CartItem> cartItems, int expectedResult)
         {
-            Assert.AreEqual(expectedResult, expectedResult);
+            using(var mock = AutoMock.GetLoose())
+            {
+                mock.Mock<IRuleReader>().Setup(x => x.ReadRules()).Returns(ReadDataFromJson);
+                var sut = mock.Create<PromotionEngine.PromotionEngine>();
+                var total = sut.Run(cartItems, ItemPriceList);
+                Assert.AreEqual(expectedResult, total);
+            }
         }
     }
 }
