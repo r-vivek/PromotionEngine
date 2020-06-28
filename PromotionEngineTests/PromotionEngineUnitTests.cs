@@ -118,7 +118,7 @@ namespace PromotionEngineTests
         {
             ReadDataFromJson =
                 JsonConvert.DeserializeObject<List<Rule>>(
-                    File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), @".\Rules.json")));
+                    File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), @"Rules.json")));
         }
 
         [Test, TestCaseSource(nameof(TestData))]
