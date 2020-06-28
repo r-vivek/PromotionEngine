@@ -1,0 +1,26 @@
+[
+  {
+    "Item": "A",
+    "Quantity": 3,
+    "Price": 130
+  },
+  {
+    "Item": "B",
+    "Quantity": 2,
+    "Price": 45
+  },
+  {
+    "Item": "CD",
+    "Dependency": [
+      {
+        "Item": "C",
+        "Quantity": 1
+      },
+      {
+        "Item": "D",
+        "Quantity": 1
+      }
+    ],
+    "Price": 30
+  }
+]

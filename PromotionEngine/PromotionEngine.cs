@@ -2,7 +2,7 @@
 
 namespace PromotionEngine
 {
-    public class Class1
+    public class PromotionEngine
     {
     }
 }
