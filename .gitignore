@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/PromotionEngineTests/bin/Debug/netcoreapp3.1
+/PromotionEngineTests/obj
+/PromotionEngine/obj
+/.vs/PromotionEngine/v16/TestStore/0/testlog.manifest
+/.vs/PromotionEngine/v16/TestStore/0/000.testlog
+/.vs/PromotionEngine/v16/TestStore/0
+/.vs/PromotionEngine/v16/.suo
+/.vs/PromotionEngine/v16
+/.vs/PromotionEngine/DesignTimeBuild/.dtbcache.v2
+/.vs/PromotionEngine/DesignTimeBuild
