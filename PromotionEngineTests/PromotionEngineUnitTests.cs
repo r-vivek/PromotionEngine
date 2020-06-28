@@ -25,14 +25,17 @@ namespace PromotionEngineTests
             new ItemPrice
             {
                 Item = "C",
-                Price = 20,
-                Exclusive = "D"
+                Price = 20
             },
             new ItemPrice
             {
                 Item = "D",
-                Price = 15,
-                Exclusive ="C"
+                Price = 15
+            },
+            new ItemPrice
+            {
+                Item = "E",
+                Price = 100,
             }
             };
 
@@ -113,6 +116,11 @@ namespace PromotionEngineTests
             {
                 Item = "B",
                 Quantity = 1
+            },
+            new CartItem
+            {
+                Item = "E",
+                Quantity = 1
             }
         };
         private static IEnumerable<TestCaseData> TestData
@@ -122,7 +130,7 @@ namespace PromotionEngineTests
                 yield return new TestCaseData(CartItemsA, 100);
                 yield return new TestCaseData(CartItemsB, 370);
                 yield return new TestCaseData(CartItemsC, 280);
-                yield return new TestCaseData(CartItemsD, 160);
+                yield return new TestCaseData(CartItemsD, 260);
             }
         }
 

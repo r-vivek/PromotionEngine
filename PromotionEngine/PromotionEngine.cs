@@ -37,6 +37,7 @@ namespace PromotionEngine
                 if (rule.Dependency == null)
                 {
                     var simpleItem = cartItems.First((x => x.Item == rule.Item));
+                    simpleItem.IsProcessed = true;
                     var simpleItemTotal = (simpleItem.Quantity / rule.Quantity) * rule.Price +
                                           (simpleItem.Quantity % rule.Quantity) * simpleItem.ItemPrice;
                     runningTotal += simpleItemTotal;
@@ -49,12 +50,14 @@ namespace PromotionEngine
                     foreach (var dRule in rule.Dependency)
                     {
                         var itemD = cartItems.Where(x => x.Item == dRule.Item).FirstOrDefault();
+                        
                         if (itemD == null)
                         {
                             discountedQuantityList.Add(0);
                             break;
                         }
 
+                        itemD.IsProcessed = true;
                         var discountedQuantity = itemD.Quantity / dRule.Quantity;
                         discountedQuantityList.Add(discountedQuantity);
                         itemDiscounts.Add(new ItemDiscount
@@ -78,6 +81,14 @@ namespace PromotionEngine
                         runningTotal += itemDiscount.GrandTotal;
                     }
                 }
+            }
+
+            var unprocessedItems = cartItems.Where(x => x.IsProcessed == false);
+
+            foreach (var unprocessedItem in unprocessedItems)
+            {
+                var total = unprocessedItem.ItemPrice * unprocessedItem.Quantity;
+                runningTotal += total;
             }
 
             return runningTotal;

@@ -8,6 +8,5 @@ namespace PromotionEngine
     {
         public string Item { get; set; }
         public int Price { get; set; }
-        public string Exclusive { get; set; }
     }
 }
